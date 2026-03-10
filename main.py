@@ -79,3 +79,10 @@ def expense_summary(db: Session = Depends(get_db)):
     for e in expenses:
         by_category[e.category] = by_category.get(e.category, 0) + e.amount
     return {"total": round(total, 2), "by_category": by_category}
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def home():
+    return {"message": "Productivity API is running"}
